@@ -5,4 +5,5 @@
 Делал нуб самоучка, приятного пользовния.
 
 DEMO:
-![An open source player](https://i.imgur.com/M215PAH.gif)
+
+![An open source player](https://i.imgur.com/xyZ0ji4.gif)
