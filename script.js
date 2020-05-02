@@ -14,6 +14,12 @@ socket.on('donation', function(msg){
 donate = amount + ' ' + valute; 
 userdonate = username + ' — ' + donate;
 
+// проверка на саб
+if(amount == 0){
+	userdonate = username;
+	message = "Новый саб!";
+}	
+
 // на всякий случай для вывода всего 
 // all = username + ' ' + message + ' ' + amount + ' ' + valute; 
 
