@@ -1,5 +1,5 @@
 var socket = io("wss://socket.donationalerts.ru:443");
-socket.emit('add-user', {token: "YOURTOKEN", type: "minor"}); // токен вставлять без token=
+socket.emit('add-user', {token: "YOUR TOKEN", type: "minor"}); // токен вставлять без token=
 
 let donates = 0;
 socket.on('donation', function(msg){
@@ -10,15 +10,13 @@ socket.on('donation', function(msg){
  message = ms.message;
  valute = ms.currency;
  amount = ms.amount;
+ alerttype = ms.alert_type;
 
 donate = amount + ' ' + valute; 
+//
 userdonate = username + ' — ' + donate;
-
-// проверка на саб
-if(amount == 0){
-	userdonate = username;
-	message = "Новый саб!";
-}	
+usersub = username + ' — ' + "Подписался!";
+userfollow = username + ' — ' + "Зафолловился!";
 
 // на всякий случай для вывода всего 
 // all = username + ' ' + message + ' ' + amount + ' ' + valute; 
@@ -38,8 +36,10 @@ document.getElementById(divid).remove(); // удаление элемента п
 donates = donates - 1; // костыль x2
 }
 
-function show(){
+function show(type){
 
+switch(type){
+case "donate":
 // создание элемента userdonate( username + сумма доната с влаютой )
 creatediv("users","userdonate");
 document.getElementById("userdonate").innerHTML = userdonate;
@@ -52,7 +52,22 @@ creatediv("soobsenie","message");
 document.getElementById("message").innerHTML = message;
 document.getElementById("message").classList.add("slideInUp");
 document.getElementById("message").classList.add("semilayer1");
+break;
 //
+case "sub":
+creatediv("users","userdonate");
+document.getElementById("userdonate").innerHTML = usersub;
+document.getElementById("userdonate").classList.add("semilayer");
+document.getElementById("userdonate").classList.add("slideInLeft");
+break;
+//
+case "follow":
+creatediv("users","userdonate");
+document.getElementById("userdonate").innerHTML = userfollow;
+document.getElementById("userdonate").classList.add("semilayer");
+document.getElementById("userdonate").classList.add("slideInLeft");
+break;
+}
 }
 
 // удаление эллементов доната
@@ -69,13 +84,47 @@ function playaudio(audiofile){
 var audio = new Audio(audiofile);
 audio.play();
 }
+// 
+
+// функция показа алерта с учетом 
+function shws(time,types)
+{
+	let timerId = setInterval(() => stop(),time);
+	show(types); // тип алерта
+	setTimeout(() => { clearInterval(timerId);},time+1000);
+}
+
+
 
 // функция покзаа доната
-function showall(time){
-	let timerId = setInterval(() => stop(), time);
-	playaudio("/sfxdonate.mp3"); // можно любой другой путь к нужному звуку
-	show();
-	setTimeout(() => { clearInterval(timerId);}, time + 1000);
+function showall(){
+	switch(alerttype){
+ case 1:
+ playaudio("/sfxdonate.mp3"); // путь к звуку
+	shws(10000,"donate"); // показ алерттайп донат
+	break;
+	//
+	// честно говоря я сам не ебу почему при вроде одинаковом алертайпе
+	// один из них при саб от 2-х считается как число
+	// а другой который самый первый саб считается как текст
+	// но я в рот ебал того кто это придумал
+	// или я сам себя в рот ебал потому что что то не понял
+	//
+ case '4':
+ playaudio("/sfxdonate.mp3"); // путь к звуку
+	shws(10000,"sub"); // показ алерттайп саб
+	break;
+	//
+ case 4:
+ playaudio("/sfxdonate.mp3"); // путь к звуку
+	shws(10000,"sub"); // показ алерттайп саб
+	break;	
+	//
+ case '6':
+ playaudio("/sfxdonate.mp3"); // путь к звуку
+    shws(10000,"follow"); // показ алерттайп фолов
+	break;	 
+    }
 }
 
 // сам показ доната + очередь, которая работает через костыль
@@ -84,12 +133,12 @@ function showall(time){
 
 if (donates == 0 ){
 	console.log("well");
-	showall(11000);
+	showall();
 }
 
 else
 {
-setTimeout(function(){ showall(11000);},14000)
+setTimeout(function(){ showall();},14000)
 }
 
 
