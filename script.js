@@ -4,19 +4,23 @@ socket.emit('add-user', {token: "YOUR TOKEN", type: "minor"}); // токен в�
 let donates = 0;
 socket.on('donation', function(msg){
 
+//
+let time = 10000; // длительность доната в мс
+//
+
  ms = JSON.parse(msg); // Получаем var msg (т.е. все переменные доната)
 
- username = ms.username;
- message = ms.message;
- valute = ms.currency;
- amount = ms.amount;
- alerttype = ms.alert_type;
+const username = ms.username;
+const  message = ms.message;
+const  valute = ms.currency;
+const  amount = ms.amount;
+const  alerttype = ms.alert_type;
 
-donate = amount + ' ' + valute; 
+const donate = amount + ' ' + valute; 
 //
-userdonate = username + ' — ' + donate;
-usersub = username + ' — ' + "Подписался!";
-userfollow = username + ' — ' + "Зафолловился!";
+const userdonate = username + ' — ' + donate;
+const usersub = username + ' — ' + "Подписался!";
+const userfollow = username + ' — ' + "Зафолловился!";
 
 // на всякий случай для вывода всего 
 // all = username + ' ' + message + ' ' + amount + ' ' + valute; 
@@ -27,13 +31,12 @@ function creatediv(name,id){
 	var name = document.createElement("div"); // создаем элемент div
 	name.id = id; // придаем ему id
 	document.body.appendChild(name); // добавляем его в тело
-	donates = donates + 1; // переменная для очереди(костыль который надо сделать нормально)
 }
 
 // функция удаления элемента
 function removediv(divid){
 document.getElementById(divid).remove(); // удаление элемента по id
-donates = donates - 1; // костыль x2
+
 }
 
 function show(type){
@@ -73,6 +76,8 @@ break;
 // удаление эллементов доната
 function stop(){
 //
+donates = donates - 1;
+//
 removediv("userdonate");
 //
 removediv("message");
@@ -87,11 +92,11 @@ audio.play();
 // 
 
 // функция показа алерта с учетом 
-function shws(time,types)
+function shws(types)
 {
-	let timerId = setInterval(() => stop(),time);
-	show(types); // тип алерта
-	setTimeout(() => { clearInterval(timerId);},time+1000);
+	playaudio("LINKONSOUND");
+	show(types);
+	setTimeout(stop,time);
 }
 
 
@@ -100,8 +105,7 @@ function shws(time,types)
 function showall(){
 	switch(alerttype){
  case 1:
- playaudio("/sfxdonate.mp3"); // путь к звуку
-	shws(10000,"donate"); // показ алерттайп донат
+	shws("donate"); // показ алерттайп донат
 	break;
 	//
 	// честно говоря я сам не ебу почему при вроде одинаковом алертайпе
@@ -111,35 +115,35 @@ function showall(){
 	// или я сам себя в рот ебал потому что что то не понял
 	//
  case '4':
- playaudio("/sfxdonate.mp3"); // путь к звуку
-	shws(10000,"sub"); // показ алерттайп саб
+	shws("sub"); // показ алерттайп саб
 	break;
 	//
  case 4:
- playaudio("/sfxdonate.mp3"); // путь к звуку
-	shws(10000,"sub"); // показ алерттайп саб
+	shws("sub"); // показ алерттайп саб
 	break;	
 	//
  case '6':
- playaudio("/sfxdonate.mp3"); // путь к звуку
-    shws(10000,"follow"); // показ алерттайп фолов
+    shws("follow"); // показ алерттайп фолов
 	break;	 
     }
 }
 
-// сам показ доната + очередь, которая работает через костыль
-// пока что тестовый вариант, очередь макс. 2 доната 
-// т.е. 1 показывается 1 в очереди
+// ебучая очередь донатов я рот ее ебал
+// сделал жопой об косяк я ее рот ебал
+// иногда багуется наверно пофикшу когда нить
 
-if (donates == 0 ){
-	console.log("well");
-	showall();
-}
-
-else
-{
-setTimeout(function(){ showall();},14000)
-}
+if (donates == 0){
+ 	donates = donates + 1;
+ 	showall();
+ }
+else{
+	donates = donates + 1;
+	koef = time*donates+1000
+	console.log('timer = ' + koef)
+	setTimeout(function() { 
+		showall();
+ 	}, koef);
+ }
 
 
 });
