@@ -3,7 +3,7 @@
 Имеется: простая анимация показов донатов, фолловеров и сабов; очередь оповещений(иногда багуется, еще сырая); гибкая настройка для создания своего оповещения.
 (Обязателно правильно укажите путь на style.css)
 
-DEMO:
+DEMO: 
 
 ![An open source player](https://i.imgur.com/xyZ0ji4.gif)
 ![An open source player](https://i.imgur.com/X7pNUz0.gif)
