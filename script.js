@@ -1,5 +1,5 @@
 var socket = io("wss://socket.donationalerts.ru:443");
-socket.emit('add-user', {token: "YOUR TOKEN", type: "minor"}); // токен вставлять без token=
+socket.emit('add-user', {token: "BaoWXhE4UhFWxDBcPXdG", type: "minor"}); // токен вставлять без token=
 
 let donates = 0;
 socket.on('donation', function(msg){
