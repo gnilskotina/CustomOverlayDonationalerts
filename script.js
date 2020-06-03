@@ -16,6 +16,8 @@ socket.on('donation', async function(msg) {
     const alerttype = ms.alert_type;
     const months = ms.months;
 
+    const usersub = username + ' — подписался!';
+    const userfollow = username + ' — зафолловился!';
     const userdonate = username + ' — ' + amount + ' ' + valute;
 
     const soundannouncement = ["/sfxdonate.mp3"] // массив с саунданонсерами, будут выбираться случайно
