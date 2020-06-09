@@ -1,0 +1,199 @@
+@import url(https://allfont.ru/allfont.css?fonts=avantgardectt);
+
+body {
+    background-color: #00b140;
+    font-family: 'AvantGardeCTT', arial;
+}
+
+
+div {
+    text-align: center;
+}
+
+.move1 {
+    animation-duration: 3s;
+    animation-name: slidein1;
+
+}
+
+@keyframes slidein1 {
+    from {
+        margin-left: 100%;
+        width: 300%;
+    }
+
+    to {
+        margin-left: 0%;
+        width: 100%;
+    }
+}
+
+.slideInLeft {
+    -webkit-animation-name: slideInLeft;
+    animation-name: slideInLeft;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+@-webkit-keyframes slideInLeft {
+    0% {
+        -webkit-transform: translateX(-100%);
+        transform: translateX(-100%);
+        visibility: visible;
+    }
+
+    100% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInLeft {
+    0% {
+        -webkit-transform: translateX(-100%);
+        transform: translateX(-100%);
+        visibility: visible;
+    }
+
+    100% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+}
+
+.slideInUp {
+    -webkit-animation-name: slideInUp;
+    animation-name: slideInUp;
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+@-webkit-keyframes slideInUp {
+    0% {
+        -webkit-transform: translateY(100%);
+        transform: translateY(100%);
+        visibility: visible;
+    }
+
+    100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInUp {
+    0% {
+        -webkit-transform: translateY(100%);
+        transform: translateY(100%);
+        visibility: visible;
+    }
+
+    100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+}
+
+
+
+.semilayer {
+    padding: 5px;
+    background: #ff0000;
+    margin: 0 auto;
+    width: 40%;
+    opacity: 1;
+    filter: alpha(Opacity=100);
+}
+
+.semilayer1 {
+    padding: 5px;
+    background: #000000;
+    margin: 0 auto;
+    width: 40%;
+    opacity: 1;
+    filter: alpha(Opacity=100);
+}
+
+#userdonate {
+    color: white;
+}
+
+#message {
+    color: white;
+    margin-top: 5px;
+}
+
+
+
+
+.text-focus-in {
+    -webkit-animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+    animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+}
+
+@-webkit-keyframes text-focus-in {
+    0% {
+        -webkit-filter: blur(12px);
+        filter: blur(12px);
+        opacity: 0;
+    }
+
+    100% {
+        -webkit-filter: blur(0px);
+        filter: blur(0px);
+        opacity: 1;
+    }
+}
+
+@keyframes text-focus-in {
+    0% {
+        -webkit-filter: blur(12px);
+        filter: blur(12px);
+        opacity: 0;
+    }
+
+    100% {
+        -webkit-filter: blur(0px);
+        filter: blur(0px);
+        opacity: 1;
+    }
+}
+
+.text-focus-out {
+    -webkit-animation: text-focus-out 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+    animation: text-focus-out 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+}
+
+@-webkit-keyframes text-focus-out {
+    0% {
+        -webkit-filter: blur(0px);
+        filter: blur(0px);
+        opacity: 1;
+    }
+
+    100% {
+        -webkit-filter: blur(12px);
+        filter: blur(12px);
+        opacity: 0;
+    }
+
+}
+
+@keyframes text-focus-out {
+    0% {
+        -webkit-filter: blur(0px);
+        filter: blur(0px);
+        opacity: 1;
+    }
+
+    100% {
+        -webkit-filter: blur(12px);
+        filter: blur(12px);
+        opacity: 0;
+    }
+
+}
