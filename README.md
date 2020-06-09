@@ -18,7 +18,7 @@
 Тоже самое, что с обычным хостингом только этот вариант бесплатный. Через github загрузить файлы на heroku, скомпилить(у вас будет ссылка на скомпиленный сайт). Создать браузер в обс и указать ссылку на сайт.
 
 # DEMO: 
-
 ![An open source player](https://i.imgur.com/xyZ0ji4.gif)
 ![An open source player](https://i.imgur.com/X7pNUz0.gif)
 ![An open source player](https://i.imgur.com/XO8wUKP.gif)
+[Страница настроек](https://gnil.site/donats/setting.html)
