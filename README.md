@@ -4,11 +4,11 @@
 А так же делать красивые CSS анимации на оповещения донатов.
 
 # Настройка
-1) Указать свой token от donationalerts в script.js
-2) Указать правильный путь на звуки(массив announcement) в script.js
-3) Указать нужное время доната(перменная time(указывать в мс))(~20с. норма) в script.js
-4) Правильно указать путь к style.css в index.html
-
+1) Перейти на страницу /setting.html
+2) Указать все настройки правильно.
+3) Нажать кнопку "Создать кфг".
+4) Перезагрузить страницу, на которую вас перекинуло, с помощью CTRL+F5.
+(DEMO страницы настроек -> [click me](https://gnil.site/donats/setting.html))
 # Способы пользования
 ## Через браузер на компьютере
 Нужно запустить локально через ваш браузер на пк файл index.html и захватить окно через обс.
@@ -21,4 +21,3 @@
 ![An open source player](https://i.imgur.com/xyZ0ji4.gif)
 ![An open source player](https://i.imgur.com/X7pNUz0.gif)
 ![An open source player](https://i.imgur.com/XO8wUKP.gif)
-![Страница настроек](https://gnil.site/donats/setting.html)
