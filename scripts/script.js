@@ -83,6 +83,7 @@ socket.on('donation', async function(msg) {
 
     // показ донатов в соотвествии с типом анонса
     function show(type) {
+
         switch (type) {
             case "donate":
                 animate("users", "userdonate", cfg.animstart, userdonate, "semilayer");
@@ -105,7 +106,7 @@ socket.on('donation', async function(msg) {
     // функция остановки доната
     function stop(type) {
 
-        donates = donates - 1;
+
 
         if (type == "donate") {
             document.getElementById("userdonate").classList.add(cfg.animbreak);
@@ -174,8 +175,9 @@ socket.on('donation', async function(msg) {
         showall();
     } else {
         donates = donates + 1;
-        koef = time * donates + 1000
+        koef = time * donates
         setTimeout(function() {
+            donates = donates - 1;
             showall();
         }, koef);
     }
