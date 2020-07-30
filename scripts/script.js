@@ -28,7 +28,6 @@ socket.on('donation', async function(msg) {
     const soundannouncement = [cfg.soundannouncement]; // массив с саунданонсерами, будут выбираться случайно
 
     let time = cfg.time;
-    console.log(time);
 
     // функция для синтеза речи
     function speak(txt, audiofile) {
@@ -147,6 +146,9 @@ socket.on('donation', async function(msg) {
                 shws("donate");
                 break;
                 //
+            case 13:
+            case 15:
+            case 4:
             case '4':
                 //
                 shws("sub");
@@ -156,11 +158,7 @@ socket.on('donation', async function(msg) {
                 // а другой который самый первый саб считается как текст
                 // но я в рот ебал того кто это придумал
                 // или я сам себя в рот ебал потому что что то не понял
-            case 4:
-                //
-                shws("sub");
-                break;
-                //
+                // UPD: вышло новых дохуя алертов для сабов, поэтому несколько кейсов
             case '6':
                 //
                 shws("follow");
@@ -175,7 +173,7 @@ socket.on('donation', async function(msg) {
         showall();
     } else {
         donates = donates + 1;
-        koef = time * donates
+        koef = time * donates + cfg.timeanim * donates
         setTimeout(function() {
             donates = donates - 1;
             showall();
