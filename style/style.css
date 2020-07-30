@@ -5,10 +5,52 @@ body {
     font-family: 'AvantGardeCTT', arial;
 }
 
+.holder {
+    position: relative;
+    width: 300px;
+    height: 400px;
+    right: 0;
+    bottom: 0;
+    z-index: 4;
+}
+
+#footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    color: #fff;
+    width: 100%;
+}
+
+.toset {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 20px;
+    display: none;
+    z-index: 4;
+}
+
+.holder:hover .toset {
+    display: block;
+}
 
 div {
     text-align: center;
 }
+
+.block {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 20px;
+    display: none;
+}
+
 
 .move1 {
     animation-duration: 3s;
