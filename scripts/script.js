@@ -42,10 +42,14 @@ socket.on('donation', async function(msg) {
             audioContext.decodeAudioData(request.response, function(buffer) {
                 var duration = buffer.duration * 1000;
                 setTimeout(function() {
-                    const say = new SpeechSynthesisUtterance();
-                    say.lang = "ru-RU";
-                    say.text = txt;
-                    window.speechSynthesis.speak(say);
+                   // старая версия озвучки(работает только при захвате бразуера)
+                   // const say = new SpeechSynthesisUtterance();
+                   // say.lang = "ru-RU";
+                   // say.text = txt;
+                   //  window.speechSynthesis.speak(say);
+                   //
+                   let url = 'https://apihost.ru/php/app.php?&text='+ txt.replace(" ","%20") +'&format=mp3&lang=ru-RU&speed=1.0&emotion=neutral&speaker=ermilov&robot=1';
+                   playaudio(url);
                 }, duration)
             });
         };
