@@ -48,7 +48,7 @@ socket.on('donation', async function(msg) {
                    // say.text = txt;
                    //  window.speechSynthesis.speak(say);
                    //
-                   let url = 'https://apihost.ru/php/app.php?&text='+ txt.replace(" ","%20") +'&format=mp3&lang=ru-RU&speed=1.0&emotion=neutral&speaker=ermilov&robot=1';
+                   let url = 'https://texttospeech.responsivevoice.org/v1/text:synthesize?text='+ txt.replace(" ","%20") +'&lang=ru&engine=g1&name=&pitch=0.5&rate=0.5&volume=1&key=PL3QYYuV&gender=female';
                    playaudio(url);
                 }, duration)
             });
