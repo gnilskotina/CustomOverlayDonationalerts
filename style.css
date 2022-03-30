@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
+
+body{
+    font-family: 'Inter', sans-serif;
+    
+}
+
+.topAlert{
+    text-align: center;
+    font-size: 45px;
+    color: whitesmoke;
+    padding: 5px;
+    background: #b62626be;
+    margin: 0 auto;
+    margin-bottom: 5px;
+    width: 40%;
+}
+
+.bottomAlert{
+    text-align: center;
+    font-size: 24px;
+    color: whitesmoke;
+    padding: 5px;
+    background: #00000079;
+    margin: 0 auto;
+    width: 40%;
+}
+
+.slide-left {
+	-webkit-animation: slide-left 1s ease-out both;
+	        animation: slide-left 1s ease-out both;
+}
+
+.slide-right {
+	-webkit-animation: slide-right 1s ease-out both;
+	        animation: slide-right 1s ease-out both;
+}
+
+.text-blur-out {
+	-webkit-animation: text-blur-out 1.2s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+	        animation: text-blur-out 1.2s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+}
+
+ @-webkit-keyframes slide-left {
+    100% {
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
+    }
+    0% {
+      -webkit-transform: translateX(-100px);
+              transform: translateX(-100px);
+    }
+  }
+  @keyframes slide-left {
+    100% {
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
+    }
+    0% {
+      -webkit-transform: translateX(-100px);
+              transform: translateX(-100px);
+    }
+  }
+
+@-webkit-keyframes slide-right {
+    100% {
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
+    }
+    0% {
+      -webkit-transform: translateX(100px);
+              transform: translateX(100px);
+    }
+  }
+  @keyframes slide-right {
+    100% {
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
+    }
+    0% {
+      -webkit-transform: translateX(100px);
+              transform: translateX(100px);
+    }
+  }
+
+ @-webkit-keyframes text-blur-out {
+    100% {
+      -webkit-filter: blur(12px) opacity(0%);
+              filter: blur(12px) opacity(0%);
+    }
+  }
+  @keyframes text-blur-out {
+    100% {
+      -webkit-filter: blur(12px) opacity(0%);
+              filter: blur(12px) opacity(0%);
+    }
+  }
+  
