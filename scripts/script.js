@@ -1,18 +1,19 @@
 let config = {
-    "token": "yourtoken",
-    "duration" : 10000,
-    "startAnim": "slide-left",
-    "startAnim2": "slide-right",
-    "finishAnim": "text-blur-out",
-    "durationTTS": 2000
+    "token": "yourtoken", // token donationalerts
+    "duration" : 10000, // duration show alert
+    "startAnim": "slide-left", // animation class name 
+    "startAnim2": "slide-right", // animation class name 
+    "finishAnim": "text-blur-out", // animation class name 
+    "durationTTS": 2000, // donation alert sound duration 
+    "alertSound": "./scripts/sfxdonate.mp3" // url to sound alert
 }
 
 
 
 // functions
 
-//tts
-function speak(txt, audiofile) {
+//tts (MAX CHAR FOR TTS 200)
+function speak(txt) {
     setTimeout(function() {
         let url = 'https://translate.google.com/translate_tts?ie=UTF-8&q='+ txt.replace(" ","%20") +'&tl=ru&client=tw-ob';
         console.log('suka...')
@@ -26,9 +27,9 @@ function showdonate(alert_type,username,message,amount,currency,)
     switch(alert_type){
         case "1":
             //playSound
-            var audio = new Audio("./scripts/sfxdonate.mp3");
+            var audio = new Audio(config.alertSound);
             audio.play();
-            speak(message,"./scripts/sfxdonate.mp3")
+            speak(message)
             // top
             var top_alert = document.createElement("div");
             top_alert.innerHTML = username + " — "+amount+' '+currency;
@@ -60,7 +61,7 @@ function showdonate(alert_type,username,message,amount,currency,)
 let donations = [];
 //create and active socket 
 var socket = io("wss://socket.donationalerts.ru:443");
-socket.emit('add-user', { token: "5UseBxkPpv2QrLxyzrXt", type: "minor" });
+socket.emit('add-user', { token: config.token, type: "minor" });
 
 socket.on('donation',function(msg) {
     pars_msg = JSON.parse(msg);
