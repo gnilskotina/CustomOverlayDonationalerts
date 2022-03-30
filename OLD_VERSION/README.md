@@ -1,4 +1,9 @@
-# Custom overlay for donationalerts
+#СТАРАЯ ВЕРСИЯ, УЖЕ НЕ РАБОТАЕТ
+#OLD VERSION, NOT WORKED
+
+---
+
+#Custom overlay for donationalerts
 Гибкая оболочка оповещения донатов.
 Можно добавлять различные команды в донаты.
 А так же делать красивые CSS анимации на оповещения донатов.
@@ -19,3 +24,6 @@
 ![An open source player](https://i.imgur.com/xyZ0ji4.gif)
 ![An open source player](https://i.imgur.com/X7pNUz0.gif)
 ![An open source player](https://i.imgur.com/XO8wUKP.gif)
+---
+#СТАРАЯ ВЕРСИЯ, УЖЕ НЕ РАБОТАЕТ
+#OLD VERSION, NOT WORKED
