@@ -1,4 +1,4 @@
-# Description.
+## Description.
 Flexible wrapper for donation notifications. Full customization of animations and appearance of the alert.
 
 ---
