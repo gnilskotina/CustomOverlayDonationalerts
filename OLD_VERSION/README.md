@@ -4,9 +4,7 @@
 ---
 
 #Custom overlay for donationalerts
-Гибкая оболочка оповещения донатов.
-Можно добавлять различные команды в донаты.
-А так же делать красивые CSS анимации на оповещения донатов.
+Flexible wrapper for donation notifications. Full customization of animations and appearance of the alert.
 
 # Настройка
 1) Перейти на страницу /setting.html
