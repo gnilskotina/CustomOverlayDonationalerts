@@ -1,3 +1,10 @@
+<p align="center">
+  <img src="https://acc-gt.ru/wp-content/uploads/2021/03/ch_129310_UnSh.png">
+  <br>
+  <h1 align="center">Custom overlay donationalerts</h1>
+</p>
+
+
 ## Description.
 Flexible wrapper for donation notifications. Full customization of animations and appearance of the alert. There will be many more changes. 
 
