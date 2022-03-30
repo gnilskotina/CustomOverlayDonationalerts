@@ -15,3 +15,21 @@ How find token donationalerts:
 ---
 
 ## Deploy on heroku.
+**!TTS DOESN'T WORK!**
+* Create project on heroku
+* Connect **github repository(it should be private)**
+* Deploy branch
+
+---
+
+## How usage:
+
+###  Run locally (preferably)
+* Create browser in OBS scene
+* add the URL to the file like:
+```
+file:///<Index.html file location>
+``` 
+### Run heroku (tts doesn't work)
+* Create browser in OBS scene
+* Add URL app heroku
