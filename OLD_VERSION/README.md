@@ -1,4 +1,5 @@
-# СТАРАЯ ВЕРСИЯ, УЖЕ НЕ РАБОТАЕТ
+# СТАРАЯ ВЕРСИЯ, УЖЕ НЕ РАБОТАЕТ 
+<a href="https://github.com/gnilskotina/CustomOverlayDonationalerts/">НОВАЯ ВЕРСИЯ</a>
 # OLD VERSION, NOT WORKED
 
 ---
