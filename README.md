@@ -38,3 +38,17 @@ file:///<Index.html file location>
 
 ---
 
+## Animation customization and more:
+
+Alert design:
+* Class ```topAlert``` - The appearance of the top of the donation (name and amount)
+* Class ```bottomAlert``` - The appearance of the bottom of the donation (message)
+
+Animation:
+
+For new animations need add css class with animation in ```style.css``` and add this class for object. You can just change the names of the animations in ```let config```
+
+---
+
+## DEMO:
+![An open source player](https://i.imgur.com/TjA0dkl.gif)
