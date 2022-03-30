@@ -1,5 +1,5 @@
 ## Description.
-Flexible wrapper for donation notifications. Full customization of animations and appearance of the alert.
+Flexible wrapper for donation notifications. Full customization of animations and appearance of the alert. There will be many more changes. 
 
 ---
 
@@ -52,3 +52,9 @@ For new animations need add css class with animation in ```style.css``` and add 
 
 ## DEMO:
 ![An open source player](https://i.imgur.com/TjA0dkl.gif)
+
+---
+### OFFTOP
+Пофиксил все баги, которые были в прошлой версии. Ну и к тому же код сделал более читаемым(ну на сколько смог). Еще будет много изменений.
+
+Version 2. 
