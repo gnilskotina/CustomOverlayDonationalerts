@@ -6,9 +6,10 @@ Flexible wrapper for donation notifications. Full customization of animations an
 ## Setting up.
 Before starting, you must first configure ```let config``` (in script.js).
 All descriptions of variables are in the comments to the code.
- 
-*After downloading, if you are not using the old version, then you need to delete the OLD_VERSION folder.*
 
+*After downloading, if you are not using the old version, then you need to delete the OLD_VERSION folder.*
+-
+---
 How find token donationalerts:
 * Go to SETTINGS -> MAIN SETTINGS 
 * Copy secret token 
