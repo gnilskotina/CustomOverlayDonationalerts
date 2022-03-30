@@ -9,7 +9,7 @@ All descriptions of variables are in the comments to the code.
 
 *After downloading, if you are not using the old version, then you need to delete the OLD_VERSION folder.*
 -
----
+
 How find token donationalerts:
 * Go to SETTINGS -> MAIN SETTINGS 
 * Copy secret token 
@@ -35,3 +35,6 @@ file:///<Index.html file location>
 ### Run heroku (tts doesn't work)
 * Create browser in OBS scene
 * Add URL app heroku
+
+---
+
