@@ -1,62 +1,120 @@
+// exchange rate to RUB
+let currencylist = {
+    "EUR": "",
+    "USD": "",
+    "RUB": 1,
+    "TRY": "",
+    "BRL": "",
+    "PLN": ""
+}
+fetch('https://www.cbr-xml-daily.ru/daily_json.js')
+  .then(data => data.json()) //хуево выглядит, потом переделаю...
+  .then (daily_json => {currencylist['EUR'] = daily_json['Valute']['EUR']['Value']/daily_json['Valute']['EUR']['Nominal']
+                        currencylist['USD'] = daily_json['Valute']['USD']['Value']/daily_json['Valute']['USD']['Nominal']
+                        currencylist['TRY'] = daily_json['Valute']['TRY']['Value']/daily_json['Valute']['TRY']['Nominal']
+                        currencylist['BRL'] = daily_json['Valute']['BRL']['Value']/daily_json['Valute']['BRL']['Nominal']
+                        currencylist['PLN'] = daily_json['Valute']['PLN']['Value']/daily_json['Valute']['PLN']['Nominal']})
+
 let config = {
-    "token": "yourtoken", // token donationalerts
+    "token": "YOUR TOKEN", // token donationalerts
     "duration" : 10000, // duration show alert
     "startAnim": "slide-left", // animation class name 
     "startAnim2": "slide-right", // animation class name 
     "finishAnim": "text-blur-out", // animation class name 
-    "durationTTS": 2000, // donation alert sound duration 
-    "alertSound": "./scripts/sfxdonate.mp3" // url to sound alert
+    "sounds":{
+        "defaultSound":{
+            "durationSound": 2000, // donation alert sound duration 
+            "alertSound": "./resource/sfxdonate.mp3", // url to sound alert
+        },
+        "specialSound":{
+            "durationSound": 3000,
+            "alertSound": "./resource/specialSound.mp3"
+        }
+    },
+    "other": {
+        "flag" : true, // on/off other
+        "url" : "./resource/gif.gif"    // default gif/pic for other 
+        },
 }
 
-
-
 // functions
-
+//special img/gif a certain amount (хуево выглядит согласен, потом переделаю...)
+function special(alert,topAlert,bottomAlert,otherAlert,amount){
+    switch(true){
+        case(amount > 500): //example alert amount = 500
+            sound = config['sounds']['specialSound']; // change sound alert
+            otherAlert.src = "./resource/1.jpg"; // !! need other.flag == true !! if ==false alert will not work 
+            topAlert.style.backgroundColor = 'gold'; // change top alert backgroundcolor to gold
+            topAlert.style.color = 'black'; // change top alert textcolor to gold
+            bottomAlert.style.backgroundColor = 'white' // change bottom alert backgroundcolor to white
+            bottomAlert.style.color = 'black' // change bottom alert textcolor to black
+            console.log('special show');
+            break;
+        
+    }
+}
 //tts (MAX CHAR FOR TTS 200)
-function speak(txt) {
+function speak(txt,timeout) {
     setTimeout(function() {
         let url = 'https://translate.google.com/translate_tts?ie=UTF-8&q='+ txt.replace(" ","%20") +'&tl=ru&client=tw-ob';
         console.log('suka...')
         var audio = new Audio(url);
         audio.play();
-     }, config.durationTTS)
+     }, timeout)
 }
 // create and show donate alert
-function showdonate(alert_type,username,message,amount,currency,)
+function showdonate(alert_type,username,message,amount,currency,amount2rub)
 {
     switch(alert_type){
+        //donation
         case "1":
-            //playSound
-            var audio = new Audio(config.alertSound);
-            audio.play();
-            speak(message)
+            // default sound find
+            sound = config['sounds']['defaultSound']
+            // create alert form
+            var alert = document.createElement("div");
+            alert.className = "alert";
+            document.body.appendChild(alert);
+            // other alert elements(below is an example picture)
+            if (config.other.flag != false){
+                var other = document.createElement("img");
+                other.src = config.other.url;
+                other.className = "otherAlert";
+                other.className += " " + config.startAnim2;
+                alert.appendChild(other);
+            }
             // top
             var top_alert = document.createElement("div");
             top_alert.innerHTML = username + " — "+amount+' '+currency;
             top_alert.className = "top";
             top_alert.className += " topAlert"; // eng - A space is required before the second class. рус - Пробел обязателен перед вторым классом 
             top_alert.className += " " + config.startAnim;
-            document.body.appendChild(top_alert);
+            alert.appendChild(top_alert);
             // bottom
             var bottom_alert = document.createElement("div");
             bottom_alert.innerHTML = message;
-            bottom_alert.className = "bottom";
-            bottom_alert.className += " bottomAlert"; // eng - A space is required before the second class. рус - Пробел обязателен перед вторым классом 
-            bottom_alert.className += " " + config.startAnim2;
-            document.body.appendChild(bottom_alert);
+            if (message != ''){ // гавно. временное решение.. потом переделаю...
+                bottom_alert.className = "bottom";
+                bottom_alert.className += " bottomAlert"; // eng - A space is required before the second class. рус - Пробел обязателен перед вторым классом 
+                bottom_alert.className += " " + config.startAnim2;}
+            alert.appendChild(bottom_alert);
+            // Update for special alerts
+            special(alert,top_alert,bottom_alert,other,amount2rub)
+            //playSound
+            var audio = new Audio(sound.alertSound);
+            audio.play();
+            speak(message,sound.durationSound);
             // close donation (ебанный костыль. хуй знает как это по-человечьи сделать)
             setTimeout(function(){
                 top_alert.className += " " + config.finishAnim;
                 bottom_alert.className += " " + config.finishAnim;
+                other.className += " " + config.finishAnim;
                 setTimeout(function(){
-                    top_alert.remove();
-                    bottom_alert.remove();
+                    alert.remove();
                 },2000);
             },config.duration);
             break;
     }
 }
-//
 
 let donations = [];
 //create and active socket 
@@ -64,18 +122,20 @@ var socket = io("wss://socket.donationalerts.ru:443");
 socket.emit('add-user', { token: config.token, type: "minor" });
 
 socket.on('donation',function(msg) {
+    console.log(msg);
     pars_msg = JSON.parse(msg);
     data = {
         alert_type: pars_msg.alert_type,
         username: pars_msg.username,
         message: pars_msg.message,
         amount: pars_msg.amount,
-        currency: pars_msg.currency
+        currency: pars_msg.currency,
+        amount2rub: pars_msg.amount*currencylist[pars_msg.currency]
     }
-    donations.push(data)
+    donations.push(data);
 
     console.log(data);
-    console.log(donations.length)
+    console.log(donations.length);
 });
 
 
@@ -85,8 +145,10 @@ let timer = setInterval(() => {
             donations[0].username,
             donations[0].message,
             donations[0].amount,
-            donations[0].currency);
-        donations.shift()
-        console.log('показываю')
+            donations[0].currency,
+            donations[0].amount2rub);
+        donations.shift();
+        console.log('show');
     }
 }, config.duration+2000);
+
