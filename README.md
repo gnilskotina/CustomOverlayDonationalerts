@@ -89,7 +89,7 @@ Other check comment code in script config.
 
 ## DEMO:
 <img src="https://i.imgur.com/TjA0dkl.gif" width="500">
-<img src="https://i.imgur.com/XRkzETz.gif" width="500">
+<img src="https://i.imgur.com/XRkzETz.gif" width="50%">
 *(with gif/img)*
 
 ---
