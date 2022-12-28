@@ -83,13 +83,19 @@ case(amount > YOUR AMOUNT):
             bottomAlert.style.color = 'black' // change bottom alert textcolor to black. You can change for any other color.
             break;
 ```
+
+<details>
+  <summary>Example</summary>
+  <img src="/demo/2.gif" width="500">
+</details>
+
 Other check comment code in script config.
 
 ---
 
 ## DEMO:
 <img src="https://i.imgur.com/TjA0dkl.gif" width="500">
-<img src="https://i.imgur.com/530NMUW.gif" width="500">
+<img src="/demo/1.gif" width="500">
 *(with gif/img)*
 
 ---

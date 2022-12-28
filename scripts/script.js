@@ -7,7 +7,7 @@ let currencylist = {
     "BRL": "",
     "PLN": ""
 }
-fetch('https://www.cbr-xml-daily.ru/daily_json.js')
+fetch('https://www.cbr-xml-daily.ru/daily_json.js') // parse currency
   .then(data => data.json()) //хуево выглядит, потом переделаю...
   .then (daily_json => {currencylist['EUR'] = daily_json['Valute']['EUR']['Value']/daily_json['Valute']['EUR']['Nominal']
                         currencylist['USD'] = daily_json['Valute']['USD']['Value']/daily_json['Valute']['USD']['Nominal']
@@ -18,13 +18,15 @@ fetch('https://www.cbr-xml-daily.ru/daily_json.js')
 let config = {
     "token": "YOUR TOKEN", // token donationalerts
     "duration" : 10000, // duration show alert
+    "animation": {
     "startAnim": "slide-left", // animation class name 
     "startAnim2": "slide-right", // animation class name 
     "finishAnim": "text-blur-out", // animation class name 
+    },
     "sounds":{
         "defaultSound":{
             "durationSound": 2000, // donation alert sound duration 
-            "alertSound": "./resource/sfxdonate.mp3", // url to sound alert
+            "alertSound": "./resource/sfxdonate.mp3" // url to sound alert
         },
         "specialSound":{
             "durationSound": 3000,
@@ -79,7 +81,7 @@ function showdonate(alert_type,username,message,amount,currency,amount2rub)
                 var other = document.createElement("img");
                 other.src = config.other.url;
                 other.className = "otherAlert";
-                other.className += " " + config.startAnim2;
+                other.className += " " + config.animation.startAnim2;
                 alert.appendChild(other);
             }
             // top
@@ -87,7 +89,7 @@ function showdonate(alert_type,username,message,amount,currency,amount2rub)
             top_alert.innerHTML = username + " — "+amount+' '+currency;
             top_alert.className = "top";
             top_alert.className += " topAlert"; // eng - A space is required before the second class. рус - Пробел обязателен перед вторым классом 
-            top_alert.className += " " + config.startAnim;
+            top_alert.className += " " + config.animation.startAnim;
             alert.appendChild(top_alert);
             // bottom
             var bottom_alert = document.createElement("div");
@@ -95,19 +97,21 @@ function showdonate(alert_type,username,message,amount,currency,amount2rub)
             if (message != ''){ // гавно. временное решение.. потом переделаю...
                 bottom_alert.className = "bottom";
                 bottom_alert.className += " bottomAlert"; // eng - A space is required before the second class. рус - Пробел обязателен перед вторым классом 
-                bottom_alert.className += " " + config.startAnim2;}
+                bottom_alert.className += " " + config.animation.startAnim2;}
             alert.appendChild(bottom_alert);
+
             // Update for special alerts
             special(alert,top_alert,bottom_alert,other,amount2rub)
             //playSound
             var audio = new Audio(sound.alertSound);
             audio.play();
-            speak(message,sound.durationSound);
+            //speak tts
+            speak(message,sound.durationSound); 
             // close donation (ебанный костыль. хуй знает как это по-человечьи сделать)
             setTimeout(function(){
-                top_alert.className += " " + config.finishAnim;
-                bottom_alert.className += " " + config.finishAnim;
-                other.className += " " + config.finishAnim;
+                top_alert.className += " " + config.animation.finishAnim;
+                bottom_alert.className += " " + config.animation.finishAnim;
+                other.className += " " + config.animation.finishAnim;
                 setTimeout(function(){
                     alert.remove();
                 },2000);
@@ -152,3 +156,6 @@ let timer = setInterval(() => {
     }
 }, config.duration+2000);
 
+// need add text writing anim - x
+// anim conf - x
+//
