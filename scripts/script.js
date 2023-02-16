@@ -86,14 +86,14 @@ function showdonate(alert_type,username,message,amount,currency,amount2rub)
             }
             // top
             var top_alert = document.createElement("div");
-            top_alert.innerHTML = username + " — "+amount+' '+currency;
+            top_alert.innerText = username + " — "+amount+' '+currency;
             top_alert.className = "top";
             top_alert.className += " topAlert"; // eng - A space is required before the second class. рус - Пробел обязателен перед вторым классом 
             top_alert.className += " " + config.animation.startAnim;
             alert.appendChild(top_alert);
             // bottom
             var bottom_alert = document.createElement("div");
-            bottom_alert.innerHTML = message;
+            bottom_alert.innerText = message;
             if (message != ''){ // гавно. временное решение.. потом переделаю...
                 bottom_alert.className = "bottom";
                 bottom_alert.className += " bottomAlert"; // eng - A space is required before the second class. рус - Пробел обязателен перед вторым классом 
