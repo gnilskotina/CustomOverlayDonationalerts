@@ -70,6 +70,7 @@ function showdonate(alert_type,username,message,amount,currency,amount2rub)
     switch(alert_type){
         //donation
         case "1":
+        case 1:
             // default sound find
             sound = config['sounds']['defaultSound']
             // create alert form
