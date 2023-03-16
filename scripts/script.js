@@ -98,7 +98,7 @@ function showdonate(alert_type,username,message,amount,currency,amount2rub)
             // Update for special alerts
             special(alert,top_alert,bottom_alert,other,amount2rub)
             //playSound
-            var audio = new Audio(sound.alertSound);
+            var audio = new Audio(sound);
             audio.play();
             //speak tts
             audio.onloadeddata =  function(){speak(message,this.duration)};// audio.onloadeddata find alert sound duration
@@ -118,10 +118,9 @@ function showdonate(alert_type,username,message,amount,currency,amount2rub)
 let donations = [];
 //create and active socket 
 var socket = io("wss://socket.donationalerts.ru:443");
-socket.emit('add-user', { token: config.token, type: "minor" });
+socket.emit('add-user', { token: config.token, type: "alert_widget" });
 
 socket.on('donation',function(msg) {
-    console.log(msg);
     pars_msg = JSON.parse(msg);
     data = {
         alert_type: pars_msg.alert_type,
