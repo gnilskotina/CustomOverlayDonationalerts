@@ -24,14 +24,8 @@ let config = {
     "finishAnim": "text-blur-out", // animation class name 
     },
     "sounds":{
-        "defaultSound":{
-            "durationSound": 2000, // donation alert sound duration 
-            "alertSound": "./resource/sfxdonate.mp3" // url to sound alert
-        },
-        "specialSound":{
-            "durationSound": 3000,
-            "alertSound": "./resource/specialSound.mp3"
-        }
+        "defaultSound": "./resource/sfxdonate.mp3", // url to sound alert
+        "specialSound": "./resource/specialSound.mp3",
     },
     "other": {
         "flag" : true, // on/off other
@@ -56,13 +50,13 @@ function special(alert,topAlert,bottomAlert,otherAlert,amount){
     }
 }
 //tts (MAX CHAR FOR TTS 200)
-function speak(txt,timeout) {
+function speak(txt,alertSoundDuration) {
     setTimeout(function() {
         let url = 'https://translate.google.com/translate_tts?ie=UTF-8&q='+ txt.replace(" ","%20") +'&tl=ru&client=tw-ob';
-        console.log('suka...')
         var audio = new Audio(url);
         audio.play();
-     }, timeout)
+        console.log(alertSoundDuration)
+     }, alertSoundDuration*1000)
 }
 // create and show donate alert
 function showdonate(alert_type,username,message,amount,currency,amount2rub)
@@ -107,7 +101,7 @@ function showdonate(alert_type,username,message,amount,currency,amount2rub)
             var audio = new Audio(sound.alertSound);
             audio.play();
             //speak tts
-            speak(message,sound.durationSound); 
+            audio.onloadeddata =  function(){speak(message,this.duration)};// audio.onloadeddata find alert sound duration
             // close donation (ебанный костыль. хуй знает как это по-человечьи сделать)
             setTimeout(function(){
                 top_alert.className += " " + config.animation.finishAnim;
