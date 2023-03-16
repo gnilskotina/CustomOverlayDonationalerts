@@ -28,6 +28,15 @@ body{
     word-break: break-all; 
 }
 
+.otherAlert{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5px;
+  width: 256px;
+  height: 256px;
+}
+
 .slide-left {
 	-webkit-animation: slide-left 1s ease-out both;
 	        animation: slide-left 1s ease-out both;
