@@ -96,7 +96,7 @@ Other check comment code in script config.
 
 
 ## 🎬DEMO:
-<img src="https://i.imgur.com/mAVNPdz.gif" width="500">
+<img src="./resource/newdemo1.gif" width="500">
 
 ---
 ### OFFTOP
