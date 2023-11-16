@@ -14,14 +14,14 @@ fetch('https://www.cbr-xml-daily.ru/daily_json.js') // parse currency
                         currencylist['TRY'] = daily_json['Valute']['TRY']['Value']/daily_json['Valute']['TRY']['Nominal']
                         currencylist['BRL'] = daily_json['Valute']['BRL']['Value']/daily_json['Valute']['BRL']['Nominal']
                         currencylist['PLN'] = daily_json['Valute']['PLN']['Value']/daily_json['Valute']['PLN']['Nominal']})
-
+// config
 let config = {
-    "token": "YOUR TOKEN", // token donationalerts
-    "duration" : 10000, // duration show alert
+    "token": localStorage.getItem('token'), // token donationalerts(localstorage or hard code value here)
+    "duration" : Number(localStorage.getItem('duration')), // duration show alert(localstorage or hard code value here)
     "animation": {
-    "startAnim": "slide-left", // animation class name 
-    "startAnim2": "slide-right", // animation class name 
-    "finishAnim": "text-blur-out", // animation class name 
+        "startAnim": "slide-left", // animation class name 
+        "startAnim2": "slide-right", // animation class name 
+        "finishAnim": "text-blur-out", // animation class name 
     },
     "sounds":{
         "defaultSound": "./resource/sfxdonate.mp3", // url to sound alert
@@ -35,13 +35,13 @@ let config = {
 
 // functions
 //special img/gif a certain amount (хуево выглядит согласен, потом переделаю...)
-function special(alert,topAlert,bottomAlert,otherAlert,amount){
+function special(alert,topAlert,username_alert,amount_alert,bottomAlert,otherAlert,amount){
     switch(true){
-        case(amount > 500): //example alert amount = 500
+        case(amount >= 500): //example alert amount = 500
             sound = config['sounds']['specialSound']; // change sound alert
             otherAlert.src = "./resource/1.jpg"; // !! need other.flag == true !! if ==false alert will not work 
-            topAlert.style.backgroundColor = 'gold'; // change top alert backgroundcolor to gold
-            topAlert.style.color = 'black'; // change top alert textcolor to gold
+            username_alert.style.backgroundColor = 'gold'; // change top alert backgroundcolor to gold
+            username_alert.style.color = 'black'; // change top alert textcolor to gold
             bottomAlert.style.backgroundColor = 'white' // change bottom alert backgroundcolor to white
             bottomAlert.style.color = 'black' // change bottom alert textcolor to black
             console.log('special show');
@@ -71,20 +71,22 @@ function showdonate(alert_type,username,message,amount,currency,amount2rub)
             var alert = document.createElement("div");
             alert.className = "alert";
             document.body.appendChild(alert);
-            // other alert elements(below is an example picture)
-            if (config.other.flag != false){
-                var other = document.createElement("img");
-                other.src = config.other.url;
-                other.className = "otherAlert";
-                other.className += " " + config.animation.startAnim2;
-                alert.appendChild(other);
-            }
             // top
             var top_alert = document.createElement("div");
-            top_alert.innerText = username + " — "+amount+' '+currency;
-            top_alert.className = "top";
-            top_alert.className += " topAlert"; // eng - A space is required before the second class. рус - Пробел обязателен перед вторым классом 
-            top_alert.className += " " + config.animation.startAnim;
+            top_alert.className = "topAlert";
+
+            var username_alert = document.createElement("div");
+            username_alert.innerText = username;
+            username_alert.className += config.animation.startAnim
+            username_alert.className += ' usernameAlert';
+
+            var amount_alert = document.createElement("div");
+            amount_alert.innerText = Math.trunc(amount)+' '+currency;
+            amount_alert.className += ' amountAlert';
+
+            top_alert.appendChild(amount_alert)
+            top_alert.appendChild(username_alert)
+            
             alert.appendChild(top_alert);
             // bottom
             var bottom_alert = document.createElement("div");
@@ -94,9 +96,16 @@ function showdonate(alert_type,username,message,amount,currency,amount2rub)
                 bottom_alert.className += " bottomAlert"; // eng - A space is required before the second class. рус - Пробел обязателен перед вторым классом 
                 bottom_alert.className += " " + config.animation.startAnim2;}
             alert.appendChild(bottom_alert);
-
+            // other alert elements(below is an example picture)
+            if (config.other.flag != false){
+                var other = document.createElement("img");
+                other.src = config.other.url;
+                other.className = "otherAlert";
+                other.className += " " + config.animation.startAnim2;
+                alert.appendChild(other);
+            }
             // Update for special alerts
-            special(alert,top_alert,bottom_alert,other,amount2rub)
+            special(alert,top_alert,username_alert,amount_alert,bottom_alert,other,amount2rub)
             //playSound
             var audio = new Audio(sound);
             audio.play();
@@ -148,8 +157,6 @@ let timer = setInterval(() => {
         donations.shift();
         console.log('show');
     }
-}, config.duration+2000);
+}, config.duration+3000);
 
-// need add text writing anim - x
-// anim conf - x
-//
+//last update 17.11.23

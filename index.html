@@ -3,9 +3,26 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.1/socket.io.js"></script>
-    <script src="./scripts/script.js"></script>
+    <script src="./scripts/alert.js"></script>
     <link rel="stylesheet" href="./style.css" type="text/css" />
 </head>
 <body>
+    <div class="settings">
+    <form class="settingsForm" id="config" style="display: none;">
+        <p class="inputForm">Token: <input type="text" id="idToken"></p>
+        <p class="inputForm">Duration (ms): <input type="text" id="idDuration"></p>
+        <input class="buttonSave" type="button" value="Save" onclick="saveConf('idToken','idDuration')" />
+    </form>
+    <form class="settingsForm" id="custom" style="display: none;">
+        <p class="inputForm">Name(original): <input type="number" id=""></p>
+        <p class="inputForm">: <input type="text" id="idDuration"></p>
+        <input class="buttonSave" type="button" value="Add" onclick="addCustom()" />
+    </form>
+    </div>
+    <div class="dontVisible">
+        <input type="button" class="buttonType"  value="Config" onclick="disp(document.getElementById('config'))" />
+       <!--- <input type="button" class="buttonType" value="Special alert" onclick="disp(document.getElementById('custom'))" /> WIP FUNCTION -->
+    </div>
 </body>
+<script src="./scripts/config.js"></script>
 </html>

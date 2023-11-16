@@ -2,7 +2,67 @@
 
 body{
     font-family: 'Inter', sans-serif;
+    background-color: rgb(93, 102, 79);
     
+}
+
+.settings{
+  width: fit-content;
+  display: flex;
+  margin: 0 auto;
+}
+
+.inputForm{
+  display: grid;
+}
+
+.settingsForm{
+  width: auto;
+  margin: 8px;
+  background-color: hsla(229, 55%, 39%, 0.705);
+  padding: 8px;
+  color: white;
+}
+
+.buttonType{
+  background-color: #f44336;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.buttonSave{
+  background-color: hsl(115, 84%, 42%);
+  border: none;
+  color: white;
+  padding: 5px 22px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+}
+
+.buttonSave:hover{
+  background-color: hsl(115, 84%, 42%,0.5);
+}
+
+.buttonType:hover{
+  background-color: hsl(0, 100%, 50%,0.5);
+}
+
+.dontVisible{
+  opacity: 0;
+  left: 0;
+  bottom: 0;
+  position: absolute;
+  margin-left: 10px;
+}
+.dontVisible:hover{
+  opacity: 1;
 }
 
 .topAlert{
@@ -10,11 +70,21 @@ body{
     font-size: 45px;
     color: whitesmoke;
     padding: 5px;
-    background: #b62626be;
     margin: 0 auto;
     margin-bottom: 5px;
     width: 40%;
-    word-break: break-all; 
+    word-wrap: break-word;
+}
+
+.usernameAlert{
+  background: #b62626be;
+  width: auto;
+  padding: 5px;
+}
+
+.amountAlert{
+  width: fit-content;
+  animation: startOnTop 2s ease 0s 1 normal forwards;
 }
 
 .bottomAlert{
@@ -25,31 +95,31 @@ body{
     background: #00000079;
     margin: 0 auto;
     width: 40%;
-    word-break: break-all; 
+    word-wrap: break-word; 
 }
 
 .otherAlert{
   display: block;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 5px;
+  margin-top: 5px;
   width: 256px;
   height: 256px;
 }
 
 .slide-left {
-	-webkit-animation: slide-left 1s ease-out both;
-	        animation: slide-left 1s ease-out both;
+	-webkit-animation: slide-left 2s ease-out both;
+	        animation: slide-left 2s ease-out both;
 }
 
 .slide-right {
-	-webkit-animation: slide-right 1s ease-out both;
-	        animation: slide-right 1s ease-out both;
+	-webkit-animation: slide-right 3s ease-out both;
+	        animation: slide-right 3s ease-out both;
 }
 
 .text-blur-out {
-	-webkit-animation: text-blur-out 1.2s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
-	        animation: text-blur-out 1.2s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+	-webkit-animation: blur-out 1.2s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+	        animation: blur-out 1.2s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
 }
 
  @-webkit-keyframes slide-left {
@@ -94,16 +164,62 @@ body{
     }
   }
 
- @-webkit-keyframes text-blur-out {
+ @-webkit-keyframes blur-out {
     100% {
       -webkit-filter: blur(12px) opacity(0%);
               filter: blur(12px) opacity(0%);
     }
   }
-  @keyframes text-blur-out {
+  @keyframes blur-out {
     100% {
       -webkit-filter: blur(12px) opacity(0%);
               filter: blur(12px) opacity(0%);
     }
   }
   
+
+  @keyframes startOnTop {
+    0% {
+      animation-timing-function: ease-in;
+      opacity: 1;
+      transform: translateY(45px);
+    }
+  
+    24% {
+      opacity: 1;
+    }
+  
+    40% {
+      animation-timing-function: ease-in;
+      transform: translateY(24px);
+    }
+  
+    65% {
+      animation-timing-function: ease-in;
+      transform: translateY(12px);
+    }
+  
+    82% {
+      animation-timing-function: ease-in;
+      transform: translateY(6px);
+    }
+  
+    93% {
+      animation-timing-function: ease-in;
+      transform: translateY(4px);
+    }
+  
+    25%,
+    55%,
+    75%,
+    87% {
+      animation-timing-function: ease-out;
+      transform: translateY(0px);
+    }
+  
+    100% {
+      animation-timing-function: ease-out;
+      opacity: 1;
+      transform: translateY(0px);
+    }
+  }
