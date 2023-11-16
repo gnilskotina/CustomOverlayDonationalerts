@@ -96,10 +96,8 @@ Other check comment code in script config.
 
 
 ## 🎬DEMO:
-<details>
-  <summary>🎬🎬🎬DEMO🎬🎬🎬</summary>
-  <img src="https://i.imgur.com/mAVNPdz.gif" width="500">
-</details>
+
+<img src="https://github.com/gnilskotina/CustomOverlayDonationalerts/blob/master/demo/newdemo1.gif" width="500">
 
 ---
 ### OFFTOP
