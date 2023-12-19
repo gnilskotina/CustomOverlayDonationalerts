@@ -60,6 +60,7 @@ file:///<Index.html file location>
 * Class ```otherAlert``` - The appearance of image/gif and others
 * Class ```amountAlert``` - The appearance of amount
 * Class ```usernameAlert``` - The appearance of username
+* Class ```iconsAlert``` - The appearance of icons
 
 ### 👾Animation:
 For new animations need add css class with animation in ```style.css``` and add this class for object. You can just change the names of the animations in ```let config```
@@ -89,7 +90,7 @@ You can set any style for any part of the alert.
 
 <details>
   <summary>Example</summary>
-  <img src="https://i.imgur.com/FvmOuaW.gif" width="500">
+  <img src="https://github.com/gnilskotina/CustomOverlayDonationalerts/blob/master/demo/newdemo2.gif?raw=true" width="500">
 </details>
 
 Other check comment code in script config.
@@ -97,7 +98,7 @@ Other check comment code in script config.
 
 ## 🎬DEMO:
 
-<img src="https://github.com/gnilskotina/CustomOverlayDonationalerts/blob/master/demo/newdemo1.gif" width="500">
+<img src="https://github.com/gnilskotina/CustomOverlayDonationalerts/blob/master/demo/newdemo1.gif?raw=true" width="500">
 
 ---
 ### OFFTOP
