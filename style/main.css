@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
+
+body{
+    font-family: 'Inter', sans-serif;
+    
+}
+
+.settings{
+  width: fit-content;
+  display: flex;
+  margin: 0 auto;
+}
+
+.inputForm{
+  display: grid;
+}
+
+.settingsForm{
+  width: auto;
+  margin: 8px;
+  background-color: hsla(229, 55%, 39%, 0.705);
+  padding: 8px;
+  color: white;
+}
+
+.buttonType{
+  background-color: #f44336;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.buttonSave{
+  background-color: hsl(115, 84%, 42%);
+  border: none;
+  color: white;
+  padding: 5px 22px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+}
+
+.buttonSave:hover{
+  background-color: hsl(115, 84%, 42%,0.5);
+}
+
+.buttonType:hover{
+  background-color: hsl(0, 100%, 50%,0.5);
+}
+
+.dontVisible{
+  opacity: 0;
+  left: 0;
+  bottom: 0;
+  position: absolute;
+  margin-left: 10px;
+}
+.dontVisible:hover{
+  opacity: 1;
+}
+

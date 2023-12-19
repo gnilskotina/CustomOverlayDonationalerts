@@ -1,0 +1,48 @@
+.topAlert{
+    text-align: center;
+    font-size: 45px;
+    color: whitesmoke;
+    padding: 5px;
+    margin: 0 auto;
+    margin-bottom: 5px;
+    width: 30%;
+    word-wrap: break-word;
+}
+
+.usernameAlert{
+  background: #b62626be;
+  width: auto;
+  padding: 5px;
+}
+
+.iconsAlert{
+  display: block;
+  margin-left: auto;
+  padding-right: 6px;
+  animation: slideInDown 2s ease 0s 1 normal forwards
+}
+
+.amountAlert{
+  width: fit-content;
+  animation: startOnTop 1.5s ease 0s 1 normal forwards;
+}
+
+.bottomAlert{
+    text-align: center;
+    font-size: 24px;
+    color: whitesmoke;
+    padding: 5px;
+    background: #00000079;
+    margin: 0 auto;
+    width: 30%;
+    word-wrap: break-word; 
+}
+
+.otherAlert{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
+  width: 256px;
+  height: 256px;
+}
