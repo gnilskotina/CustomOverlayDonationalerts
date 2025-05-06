@@ -142,7 +142,7 @@ function showdonate(data)
 
 let donations = [];
 //create and active socket 
-var socket = io("wss://socket.donationalerts.ru:443");
+var socket = io("wss://socket.donationalerts.ru:443", { transports: ["websocket"] });
 socket.emit('add-user', { token: config.token, type: "alert_widget" });
 
 socket.on('donation',function(msg) {
@@ -174,4 +174,7 @@ let timer = setInterval(() => {
     }
 }, config.duration+3000);
 
-//last update 19.12.23
+//last update 06.05.25
+//по хорошему все донаты в класс переписать, но я давно это делал поэтому просто хотфикс, ща лень разбираться
+//да и ваще надо всё переписывать на чистый вебсокет без сокет ио, ибо ДА поддерживают ток старые 2.х.х версии
+//короче кто хочет тот сделает

@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.1/socket.io.js"></script>
+    <script src="https://cdn.socket.io/socket.io-2.3.1.js"></script>
     <script src="./scripts/alert.js"></script>
     <link rel="stylesheet" href="./style/main.css" type="text/css" />
     <link rel="stylesheet" href="./style/anim.css" type="text/css" />
@@ -12,7 +12,7 @@
     <div class="settings">
     <form class="settingsForm" id="config" style="display: none;">
         <p class="inputForm">Token: <input type="text" id="idToken"></p>
-        <p class="inputForm">Duration (ms): <input type="text" id="idDuration"></p>
+        <p class="inputForm">Duration (ms): <input type="text" value="10000" id="idDuration"></p>
         <input class="buttonSave" type="button" value="Save" onclick="saveConf('idToken','idDuration')" />
     </form>
     <form class="settingsForm" id="custom" style="display: none;">
